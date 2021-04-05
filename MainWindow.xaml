@@ -1,0 +1,59 @@
+﻿<Window x:Class="CovScan.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CovScan"
+        mc:Ignorable="d"
+        Title="CovScan v0.1 du 04/04/2021 19:40" Height="450" Width="1024" Foreground="#424553" Background="#FF424553" >
+    <Grid Background="#FF272931">
+ 
+        <ComboBox ItemsSource="{Binding dpItems}" SelectedItem="{Binding SelecteddpItem}" HorizontalAlignment="Left" Margin="21,30,0,0" VerticalAlignment="Top" Width="205" SelectionChanged="ComboBox_SelectionChanged">
+        </ComboBox>
+        <Button Content="Lancer la recherche" HorizontalAlignment="Left" Margin="580,23,0,0" VerticalAlignment="Top" Click="Button_Click" Width="128" Foreground="White" Background="#FF373A45"/>
+        <Label Content="Département&#xD;&#xA;&#xD;&#xA;" Foreground="White" HorizontalAlignment="Left" Margin="21,6,0,0" VerticalAlignment="Top" Height="24" Width="124" Background="Transparent"/>
+        <TextBox Name="tbSettingText" Margin="0,65,0,320" Background="#FF272931" BorderBrush="#FF272931" Foreground="White" FontSize="16">
+            CoviScan - Etat [OK]
+        </TextBox>
+        <Grid Margin="0,114,0,0" >
+
+
+            <DataGrid x:Name="dataG"
+                      AutoGenerateColumns="False"
+                      ItemsSource="{Binding dataG}" Background="#FF424553" Foreground="#FF424553" BorderBrush="#FF424553">
+                <DataGrid.Columns >
+                    <DataGridTextColumn Binding="{Binding departement}"
+                                        Header="Dpt" Foreground="#262931"  Width="40"
+                    />
+                    <DataGridTextColumn Binding="{Binding cp}"
+                                        Header="Code Postal" Foreground="#262931" Width="80"
+                    />
+                    <DataGridTextColumn Binding="{Binding nom}"
+                                        Header="Adresse" Foreground="#262931" Width="200"
+                    />
+                    <DataGridTextColumn Binding="{Binding ville}"
+                                        Header="Ville" Foreground="#262931" Width="150"
+                    />
+                    <DataGridTextColumn Binding="{Binding pfizer}"
+                                        Header="Pfizer" Foreground="#262931" Width="100"
+                    />
+                    <DataGridTextColumn Binding="{Binding moderna}"
+                                        Header="Moderna" Foreground="#262931" Width="100"
+                    />
+                    <DataGridTextColumn Binding="{Binding aztrazeneca}"
+                                        Header="Aztrazeneca" Foreground="#262931" Width="100"
+                    />
+                    <DataGridTextColumn Binding="{Binding web}"
+                                        Header="Site Internt" Foreground="#262931" Width="250"
+                    />
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <CheckBox Content="Pfizer - BioNtech (ARNm)" HorizontalAlignment="Left" Margin="240,6,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Foreground="White"/>
+        <CheckBox Content="Moderna (ARNm)" HorizontalAlignment="Left" Margin="240,23,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox Content="Aztrazeneca" HorizontalAlignment="Left" Margin="240,41,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox Content="AutoRefresh (60 secondes)" HorizontalAlignment="Left" Margin="406,25,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Button Content="Stop" HorizontalAlignment="Left" Margin="721,23,0,0" VerticalAlignment="Top" Foreground="White" Background="#FF373A45"/>
+    </Grid>
+</Window>
